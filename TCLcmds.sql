@@ -1,0 +1,18 @@
+-- 1.Start a Transaction and Commit
+
+BEGIN TRANSACTION
+INSERT INTO Employees VALUES('pusha',35000,3)
+commit;
+
+--2.Rollback a Transaction
+BEGIN TRANSACTION
+INSERT INTO Department VALUES(5,'DeptName','BANGLORE')
+ROLLBACK;
+
+--3.Use a Savepoint
+BEGIN TRANSACTION
+SAVE TRANSACTION S1
+UPDATE Employees
+SET DeptID = 4
+WHERE EmployeeID = 1
+ROLLBACK TRANSACTION S1
